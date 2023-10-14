@@ -23,7 +23,7 @@
 
   // Fetch data when the component is mounted
   import { onMount } from 'svelte';
-  onMount(fetchLinks);
+  //onMount(fetchLinks);
 </script>
 
 <!-- Render the list of links -->
