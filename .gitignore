@@ -1,2 +1,4 @@
 node_modules/
 frontend/package-lock.json
+build/
+.svelte-kit/
