@@ -40,7 +40,7 @@
 	.background_anim {
 		position: absolute;
 		z-index: -1;
-		background-color: rgba(86, 86, 233, 0.253);
+		background-color: rgba(86, 86, 233, 0.153);
 		width: 200px;
 		height: 200px;
 		transform: rotate(30deg);
