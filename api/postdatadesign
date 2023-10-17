@@ -1,0 +1,15 @@
+-- requirements
+headers
+paragraphs
+codeblocks
+urls
+images?
+
+-- format (xml)
+<document>
+<header></header>
+<paragraph></paragraph>
+<codeblock></codeblock>
+<url></url>
+<img>(url)</img>
+</document>
