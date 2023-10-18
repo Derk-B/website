@@ -60,30 +60,30 @@ func InsertProject(project Project) {
 	db.NewInsert().Model(project).Exec(ctx)
 }
 
-// Call this to get a certain amount of blogposts from the database.
+// Call this to get blogposts from the database.
 //
-// Returns a list of blogposts limited by amount
-func GetBlogPosts(amount int) []BlogPost {
+// Returns a list of blogposts
+func GetBlogPosts() []BlogPost {
 	ctx, db := connectToDB()
 	defer ctx.Done()
 
 	posts := []BlogPost{}
 
-	db.NewSelect().Model(&BlogPost{}).Limit(amount).Scan(ctx, &posts)
+	db.NewSelect().Model(&BlogPost{}).Scan(ctx, &posts)
 
 	return posts
 }
 
-// Call this to get a certain amount of projects from the database.
+// Call this to get projects from the database.
 //
-// Returns a list of projects limited by amount
-func GetProjects(amount int) []Project {
+// Returns a list of projects
+func GetProjects() []Project {
 	ctx, db := connectToDB()
 	defer ctx.Done()
 
 	projects := []Project{}
 
-	db.NewSelect().Model(&Project{}).Limit(amount).Scan(ctx, &projects)
+	db.NewSelect().Model(&Project{}).Scan(ctx, &projects)
 
 	return projects
 }
