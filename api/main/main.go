@@ -3,6 +3,7 @@ package main
 import (
 	"api/db"
 	"fmt"
+	"os"
 
 	"github.com/gin-gonic/gin"
 )
@@ -21,5 +22,5 @@ func main() {
 			"message": "pong",
 		})
 	})
-	r.Run(":8888") // listen and serve on 0.0.0.0:8080
+	r.Run(":" + os.Getenv("API_PORT")) // listen and serve on 0.0.0.0:8080
 }

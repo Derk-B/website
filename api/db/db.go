@@ -25,10 +25,11 @@ func connectToDB() (context.Context, *bun.DB) {
 	database := os.Getenv("DB_DATABASE")
 	username := os.Getenv("DB_USERNAME")
 	address := os.Getenv("DB_IPADDRESS")
+	port := os.Getenv("DB_PORT")
 
 	pgconn := pgdriver.NewConnector(
 		pgdriver.WithNetwork("tcp"),
-		pgdriver.WithAddr(address+":5432"),
+		pgdriver.WithAddr(address+":"+port),
 		pgdriver.WithUser(username),
 		pgdriver.WithDatabase(database),
 		pgdriver.WithInsecure(true),
