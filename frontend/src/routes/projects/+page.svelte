@@ -3,25 +3,19 @@
     import type { Project } from "$lib/models/project";
     import { onMount } from "svelte";
     import ProjectCard from "./projectCard.svelte";
+    import Error from "../components/error.svelte";
     
     let data : Project[];
     onMount(async () => {
         data = await fetchProjects()
     })
 </script>
-
+{#if data}
 <div class="grid md:grid-cols-2">
-    {#if data}
-        {#each data as project, _}
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-            <ProjectCard project={project}/>
-        {/each}
-    {/if}
-
+    {#each data as project, _}
+    <ProjectCard project={project}/>
+    {/each}
 </div>
+{:else}
+<Error/>
+{/if}
