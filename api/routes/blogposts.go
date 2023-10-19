@@ -2,11 +2,14 @@ package routes
 
 import (
 	"api/db"
+	"context"
 	"encoding/json"
+
+	"github.com/uptrace/bun"
 )
 
-func ReturnBlogPosts() string {
-	projects := db.GetBlogPosts()
+func ReturnBlogPosts(ctx context.Context, dbConn *bun.DB) string {
+	projects := db.GetBlogPosts(ctx, dbConn)
 
 	data, err := json.Marshal(projects)
 

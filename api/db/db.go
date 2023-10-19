@@ -17,7 +17,7 @@ import (
 // Don't forget to call ctx.Done() when done querying.
 //
 // Returns a context and *bun.DB that you can use for queries on the database
-func connectToDB() (context.Context, *bun.DB) {
+func ConnectToDB() (context.Context, *bun.DB) {
 	ctx := context.Background()
 
 	godotenv.Load("../database/.env")
@@ -45,28 +45,19 @@ func connectToDB() (context.Context, *bun.DB) {
 }
 
 // Use this to insert a new blogpost into the database
-func InsertBlogPost(post BlogPost) {
-	ctx, db := connectToDB()
-	defer ctx.Done()
-
+func InsertBlogPost(post BlogPost, ctx context.Context, db *bun.DB) {
 	db.NewInsert().Model(post).Exec(ctx)
 }
 
 // Use this to insert a new project into the database
-func InsertProject(project Project) {
-	ctx, db := connectToDB()
-	defer ctx.Done()
-
+func InsertProject(project Project, ctx context.Context, db *bun.DB) {
 	db.NewInsert().Model(project).Exec(ctx)
 }
 
 // Call this to get blogposts from the database.
 //
 // Returns a list of blogposts
-func GetBlogPosts() []BlogPost {
-	ctx, db := connectToDB()
-	defer ctx.Done()
-
+func GetBlogPosts(ctx context.Context, db *bun.DB) []BlogPost {
 	posts := []BlogPost{}
 
 	db.NewSelect().Model(&BlogPost{}).Scan(ctx, &posts)
@@ -77,10 +68,7 @@ func GetBlogPosts() []BlogPost {
 // Call this to get projects from the database.
 //
 // Returns a list of projects
-func GetProjects() []Project {
-	ctx, db := connectToDB()
-	defer ctx.Done()
-
+func GetProjects(ctx context.Context, db *bun.DB) []Project {
 	projects := []Project{}
 
 	db.NewSelect().Model(&Project{}).Scan(ctx, &projects)

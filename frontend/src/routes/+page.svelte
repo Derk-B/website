@@ -13,19 +13,16 @@
 
 {#if pageLoaded}
 <div in:fly={{...options}} class="h-full flex items-center justify-center">
-	
 	<div class="w-fit text-center">
 		<h1 class="text-4xl font-bold mb-3 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone">Hello, my name is Derk!</h1>
 		<h2 class="text-2xl">A Dutch software developer and computer science student</h2>
 		<div class="mt-5">
-			<button type="button" class="btn variant-filled-primary m-5 w-32">Projects</button>
-			<button type="button" class="btn variant-filled-primary m-5 w-32">Blog</button>
+			<a href="/projects" class="btn variant-filled-primary m-5 w-32" data-sveltekit-preload-data="hover">Projects</a>
+			<a href="/blog" class="btn variant-filled-primary m-5 w-32" data-sveltekit-preload-data="hover">Blog</a>
 		</div>
 	</div>
 	<div class="background_anim"/>
 </div>
-
-
 {/if}
 
 <style>
