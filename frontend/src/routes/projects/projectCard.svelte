@@ -16,8 +16,8 @@
     })
 </script>
 
-<a href="/project?id={project.ID}" class="card p-4 mx-auto my-5 min-w-[80%]">
-    <img src={imgURL} class="mx-auto max-h-96" alt={project.BannerDescription}/>
+<a href="//{project.ProjectUrl}" class="card p-4 mx-auto my-5 min-w-[80%]">
+    <img src={imgURL} class="mx-auto max-h-96" alt={project.BannerAlt}/>
     <h2 class="h2 mb-5">{project.Title}</h2>
     <p>{project.Description}</p>
     <p class="text-end">{dateTime}</p>

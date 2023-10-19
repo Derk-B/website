@@ -13,7 +13,9 @@ type ProjectCardDTO struct {
 	Title       string
 	Description string
 	Timestamp   int
-	BannerURL   string
+	BannerUrl   string
+	BannerAlt   string
+	ProjectUrl  string
 }
 
 func ReturnProjects(ctx context.Context, dbConn *bun.DB) string {
@@ -25,7 +27,9 @@ func ReturnProjects(ctx context.Context, dbConn *bun.DB) string {
 			ProjectCardDTO{
 				ID:          int(project.ID),
 				Description: project.Description,
-				BannerURL:   project.BannerUrl,
+				BannerUrl:   project.BannerUrl,
+				BannerAlt:   project.BannerAlt,
+				ProjectUrl:  project.ProjectUrl,
 				Timestamp:   project.Timestamp,
 				Title:       project.Title,
 			},

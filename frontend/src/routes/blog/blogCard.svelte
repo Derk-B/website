@@ -12,12 +12,12 @@
         let date:Date = new Date(blog.Timestamp * 1000)
         dateTime = date.toLocaleDateString("nl-NL")
 
-        imgURL = blog.BannerURL ? `${PUBLIC_API_URL}/img/${blog.BannerURL}` : "404-error.png"
+        imgURL = blog.BannerUrl ? `${PUBLIC_API_URL}/img/${blog.BannerUrl}` : "404-error.png"
     })
 </script>
 
 <a href="/blogpost?id={blog.ID}" class="card p-4 mx-auto my-5 min-w-[80%]">
-    <img src={imgURL} class="mx-auto max-h-96" alt={blog.BannerDescription}/>
+    <img src={imgURL} class="mx-auto max-h-96" alt={blog.BannerAlt}/>
     <h2 class="h2 mb-5">{blog.Title}</h2>
     <p>{blog.Description}</p>
     <p class="text-end">{dateTime}</p>

@@ -47,6 +47,6 @@
     {:else if node.nodeName == "codeblock"}
         <CodeBlock class="my-5" language="dart" lineNumbers={true} code={parseCode(node.textContent)}/>
     {:else if node.nodeName == "url"}
-        <a class="chip variant-soft" href={node.textContent}>{node.textContent}</a>
+        <a class="chip variant-soft" href="//{node.textContent}">{node.textContent}</a>
     {/if}
 {/each}
