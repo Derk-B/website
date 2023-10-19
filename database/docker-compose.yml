@@ -7,6 +7,8 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_DB: ${DB_DATABASE}
     networks:
       - dbnetwork:
         ipv4_address: ${DB_IPADDRESS}
