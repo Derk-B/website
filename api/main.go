@@ -34,6 +34,7 @@ func main() {
 
 	if isReleaseMode {
 		corsConfig = cors.DefaultConfig()
+		corsConfig.AllowOrigins = []string{"http://localhost"}
 	} else {
 		corsConfig = cors.DefaultConfig()
 		corsConfig.AllowAllOrigins = true
