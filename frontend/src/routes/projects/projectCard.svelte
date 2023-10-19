@@ -9,7 +9,7 @@
     let imgURL:string
 
     onMount(() => {
-        let date:Date = new Date(project.Timestamp)
+        let date:Date = new Date(project.Timestamp * 1000)
         dateTime = date.toLocaleDateString("nl-NL")
 
         imgURL = project.BannerURL ? `${PUBLIC_API_URL}/img/${project.BannerURL}` : "404-error.png"

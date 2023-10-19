@@ -47,18 +47,18 @@ func main() {
 	defer dbConn.Close()
 
 	// Define routes
-	r.GET("/project", func(c *gin.Context) {
-		projectID, err := strconv.Atoi(c.Query("id"))
+	r.GET("/blog", func(c *gin.Context) {
+		blogID, err := strconv.Atoi(c.Query("id"))
 
 		if err != nil {
 			c.JSON(400, gin.H{
-				"message": "projectID not a number",
+				"message": "blogID not a number",
 			})
 			panic(err)
 		}
 
 		c.JSON(200, gin.H{
-			"message": routes.ReturnProject(projectID, ctx, dbConn),
+			"message": routes.ReturnBlogPost(blogID, ctx, dbConn),
 		})
 	})
 

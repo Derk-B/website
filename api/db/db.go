@@ -79,10 +79,10 @@ func GetProjects(ctx context.Context, db *bun.DB) []Project {
 // Call this to get a project by ID from the databse
 //
 // Returns a project that has the specified ID
-func GetProject(id int, ctx context.Context, db *bun.DB) Project {
-	projects := []Project{}
+func GetBlogPost(id int, ctx context.Context, db *bun.DB) BlogPost {
+	blogs := []BlogPost{}
 
-	db.NewSelect().Model(&Project{}).Where("ID = ?", id).Scan(ctx, &projects)
+	db.NewSelect().Model(&BlogPost{}).Where("ID = ?", id).Scan(ctx, &blogs)
 
-	return projects[0]
+	return blogs[0]
 }

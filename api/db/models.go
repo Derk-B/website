@@ -8,8 +8,9 @@ type Project struct {
 	ID          int64 `bun:",pk,autoincrement"`
 	Title       string
 	BannerUrl   string
+	BannerAlt   string
+	ProjectUrl  string
 	Description string
-	Content     string
 	Timestamp   int
 }
 
