@@ -75,3 +75,14 @@ func GetProjects(ctx context.Context, db *bun.DB) []Project {
 
 	return projects
 }
+
+// Call this to get a project by ID from the databse
+//
+// Returns a project that has the specified ID
+func GetProject(id int, ctx context.Context, db *bun.DB) Project {
+	projects := []Project{}
+
+	db.NewSelect().Model(&Project{}).Where("ID = ?", id).Scan(ctx, &projects)
+
+	return projects[0]
+}

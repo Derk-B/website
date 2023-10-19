@@ -1,11 +1,11 @@
 <script lang="ts">
     import { fetchProjects } from "$lib/fetchProjects";
-    import type { Project } from "$lib/models/project";
+    import type { ProjectCardDTO } from "$lib/models/project";
     import { onMount } from "svelte";
     import ProjectCard from "./projectCard.svelte";
     import Error from "../components/error.svelte";
     
-    let data : Project[];
+    let data : ProjectCardDTO[];
     onMount(async () => {
         data = await fetchProjects()
     })

@@ -2,10 +2,10 @@
     <header>Writing a routing library in Dart</header>
     <paragraph>Writing a piece of code that can handle http requests is easy</paragraph>
     <codeblock lang="dart">
-        int main() {
-            Portal portal = Portal();
-            portal.run("localhost", 8080);
+        int main() {\n
+        \t    Portal portal = Portal();\n
+        \t    portal.run("localhost", 8080);\n
         }
     </codeblock>
-    <url>github.com/derk-b/portal</url>
+    <url href="github.com/derk-b/portal">github.com/derk-b/portal</url>
 </document>

@@ -17,8 +17,8 @@
         <div class="flex justify-center m-5">
             <img width={100} src="404-error.png" alt="An icon indicating that this is a 404 error"/>
         </div>
-        <h1 class="text-4xl font-bold mb-3 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone">Error</h1>
-        <h2 class="text-4xl mb-3 bg-gradient-to-br from-red-500 to-yellow-500 bg-clip-text text-transparent box-decoration-clone">page not found</h2>
+        <h1 class="text-4xl font-bold mb-3 gradient-heading">Error</h1>
+        <h2 class="text-4xl mb-3 gradient-heading">page not found</h2>
     </div>
     {/if}
 </div>

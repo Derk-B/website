@@ -1,9 +1,9 @@
 <script lang="ts">
     import { PUBLIC_API_URL } from "$env/static/public";
-    import type { Project } from "$lib/models/project";
+    import type { ProjectCardDTO } from "$lib/models/project";
     import { onMount } from "svelte";
 
-    export let project:Project
+    export let project:ProjectCardDTO
 
     let dateTime:string
     let imgURL:string

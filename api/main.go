@@ -4,6 +4,7 @@ import (
 	"api/routes"
 	"fmt"
 	"os"
+	"strconv"
 
 	"api/db"
 
@@ -46,6 +47,21 @@ func main() {
 	defer dbConn.Close()
 
 	// Define routes
+	r.GET("/project", func(c *gin.Context) {
+		projectID, err := strconv.Atoi(c.Query("id"))
+
+		if err != nil {
+			c.JSON(400, gin.H{
+				"message": "projectID not a number",
+			})
+			panic(err)
+		}
+
+		c.JSON(200, gin.H{
+			"message": routes.ReturnProject(projectID, ctx, dbConn),
+		})
+	})
+
 	r.GET("/projects", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": routes.ReturnProjects(ctx, dbConn),
