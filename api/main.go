@@ -3,6 +3,7 @@ package main
 import (
 	"api/routes"
 	"fmt"
+	"io"
 	"os"
 	"strconv"
 
@@ -19,6 +20,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+
+	f, _ := os.Create("gin.log")
+	gin.DefaultWriter = io.MultiWriter(f)
 
 	r := gin.Default()
 
