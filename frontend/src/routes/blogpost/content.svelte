@@ -41,7 +41,7 @@
 
 {#each elements as node}
     {#if node.nodeName == "header"}
-        <h2 class="h2 text-2xl">{node.textContent}</h2>
+        <h2 class="h2 text-2xl mt-8 mb-2">{node.textContent}</h2>
     {:else if node.nodeName == "paragraph"}
         <p>{node.textContent}</p>
     {:else if node.nodeName == "codeblock"}

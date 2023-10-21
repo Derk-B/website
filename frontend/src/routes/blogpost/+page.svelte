@@ -16,7 +16,12 @@
         console.log(blog)
 
         dateTime = new Date(blog.Timestamp * 1000).toLocaleDateString("nl-NL")
-        imgRef = blog.BannerURL ? blog.BannerURL : "404-error.png"
+        if(!blog.BannerUrl) {
+            imgRef = "404-error.png"
+            return
+        }
+
+        imgRef = blog.BannerUrl.startsWith("http") ? blog.BannerUrl : `${PUBLIC_API_URL}/img/${blog.BannerUrl}`
     })
 </script>
 
@@ -24,7 +29,7 @@
     <div class="my-10 w-fit px-5 mx-auto max-w-4xl">
         <h1 class="h1 gradient-heading">{blog.Title}</h1>
         <p class="italic text-end">{dateTime}</p>
-        <img class="object-cover" src={imgRef} alt={blog.BannerDescription}/>
+        <img class="object-cover m-auto" src={imgRef} alt={blog.BannerDescription}/>
         <div>
             <Content content={blog.Content}/>
         </div>

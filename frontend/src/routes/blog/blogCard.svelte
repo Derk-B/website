@@ -12,7 +12,12 @@
         let date:Date = new Date(blog.Timestamp * 1000)
         dateTime = date.toLocaleDateString("nl-NL")
 
-        imgURL = blog.BannerUrl ? `${PUBLIC_API_URL}/img/${blog.BannerUrl}` : "404-error.png"
+        if(!blog.BannerUrl) {
+            imgURL = "404-error.png"
+            return
+        }
+
+        imgURL = blog.BannerUrl.startsWith("http") ? blog.BannerUrl : `${PUBLIC_API_URL}/img/${blog.BannerUrl}`
     })
 </script>
 
