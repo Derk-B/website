@@ -10,12 +10,14 @@
         data = await fetchProjects()
     })
 </script>
-{#if data}
+{#if data && data.length > 0}
 <div class="grid md:grid-cols-2">
     {#each data as project, _}
     <ProjectCard project={project}/>
     {/each}
 </div>
+{:else if data}
+    <h1 class="text-center h1 m-5">No projects available</h1>
 {:else}
 <Error/>
 {/if}

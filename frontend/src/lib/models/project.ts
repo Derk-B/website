@@ -1,7 +1,7 @@
 export interface ProjectCardDTO {
     ID: number,
     Title: string,
-    BannerURL: string,
+    BannerUrl: string,
     BannerAlt: string,
     ProjectUrl: string,
     Description: string,
