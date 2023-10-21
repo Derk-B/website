@@ -47,6 +47,7 @@ func ReturnBlogPost(id int, ctx context.Context, dbConn *bun.DB) string {
 		blog.Content,
 		blog.Timestamp,
 		blog.BannerUrl,
+		blog.BannerAlt,
 	}
 
 	data, err := json.Marshal(blogpostPageDTO)

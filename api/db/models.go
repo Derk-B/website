@@ -20,6 +20,7 @@ type BlogPost struct {
 	ID          int64 `bun:",pk,autoincrement"`
 	Title       string
 	BannerUrl   string
+	BannerAlt   string
 	Description string
 	Content     string
 	Timestamp   int
