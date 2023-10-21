@@ -3,6 +3,7 @@ package db
 import (
 	"context"
 	"database/sql"
+	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -46,12 +47,16 @@ func ConnectToDB() (context.Context, *bun.DB) {
 
 // Use this to insert a new blogpost into the database
 func InsertBlogPost(post BlogPost, ctx context.Context, db *bun.DB) {
-	db.NewInsert().Model(post).Exec(ctx)
+	db.NewInsert().Model(&post).Exec(ctx)
 }
 
 // Use this to insert a new project into the database
 func InsertProject(project Project, ctx context.Context, db *bun.DB) {
-	db.NewInsert().Model(project).Exec(ctx)
+	_, err := db.NewInsert().Model(&project).Exec(ctx)
+
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 // Call this to get blogposts from the database.

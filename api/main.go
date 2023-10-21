@@ -2,9 +2,11 @@ package main
 
 import (
 	"api/routes"
-	"fmt"
+	"encoding/json"
 	"io"
+	"net/http"
 	"os"
+	"slices"
 	"strconv"
 
 	"api/db"
@@ -13,6 +15,19 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
+
+func IPWhiteList(whitelist []string) gin.HandlerFunc {
+	return func(c *gin.Context) {
+		ip := c.ClientIP()
+
+		if !slices.Contains(whitelist, ip) {
+			c.IndentedJSON(http.StatusForbidden, gin.H{
+				"message": "You are not authorised to use this endpoint",
+			})
+			return
+		}
+	}
+}
 
 func main() {
 	err := godotenv.Load()
@@ -32,13 +47,11 @@ func main() {
 	// the domain of the api will be the same as the website domain.
 	isReleaseMode := os.Getenv("MODE") == "release"
 
-	fmt.Println(isReleaseMode)
-
 	var corsConfig cors.Config
 
 	if isReleaseMode {
 		corsConfig = cors.DefaultConfig()
-		corsConfig.AllowOrigins = []string{"http://localhost"}
+		corsConfig.AllowOrigins = []string{"http://localhost:5173"}
 	} else {
 		corsConfig = cors.DefaultConfig()
 		corsConfig.AllowAllOrigins = true
@@ -76,6 +89,50 @@ func main() {
 	r.GET("/blogposts", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": routes.ReturnBlogPosts(ctx, dbConn),
+		})
+	})
+
+	whitelist := []string{}
+	whitelistParseErr := json.Unmarshal([]byte(os.Getenv("IP_WHITELIST")), &whitelist)
+
+	if whitelistParseErr != nil {
+		panic(whitelistParseErr)
+	}
+
+	protectedEndpoint := r.Group("/admin")
+	protectedEndpoint.Use(IPWhiteList(whitelist))
+
+	protectedEndpoint.POST("/createproject", func(c *gin.Context) {
+		var project = db.Project{}
+		data, requestBodyErr := io.ReadAll(c.Request.Body)
+
+		if requestBodyErr != nil {
+			panic(requestBodyErr)
+		}
+
+		json.Unmarshal(data, &project)
+
+		db.InsertProject(project, ctx, dbConn)
+
+		c.JSON(200, gin.H{
+			"message": "Project uploaded",
+		})
+	})
+
+	protectedEndpoint.POST("/createblog", func(c *gin.Context) {
+		var blogPost = db.BlogPost{}
+		data, requestBodyErr := io.ReadAll(c.Request.Body)
+
+		if requestBodyErr != nil {
+			panic(requestBodyErr)
+		}
+
+		json.Unmarshal(data, &blogPost)
+
+		db.InsertBlogPost(blogPost, ctx, dbConn)
+
+		c.JSON(200, gin.H{
+			"message": "Blogpost uploaded",
 		})
 	})
 

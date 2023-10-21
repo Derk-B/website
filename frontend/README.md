@@ -36,3 +36,12 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+
+
+## GO migrations
+
+install migrate cli:
+```bash
+wget http://github.com/golang-migrate/migrate/releases/latest/download/migrate.linux-amd64.deb
+sudo dpkg -i migrate.linux-amd64.deb
+```

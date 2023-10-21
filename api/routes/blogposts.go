@@ -13,7 +13,8 @@ type BlogPageDTO struct {
 	Title     string
 	Content   string
 	Timestamp int
-	BannerURL string
+	BannerUrl string
+	BannerAlt string
 }
 
 type BlogCardDTO struct {
@@ -21,7 +22,8 @@ type BlogCardDTO struct {
 	Title       string
 	Description string
 	Timestamp   int
-	BannerURL   string
+	BannerUrl   string
+	BannerAlt   string
 }
 
 func ReturnBlogPosts(ctx context.Context, dbConn *bun.DB) string {

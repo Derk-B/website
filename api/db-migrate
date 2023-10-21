@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+set -o allexport
+source .env
+source ../database/.env
+set +o allexport
+
+echo "$DB_PASSWORD"
+
+if [ "$1" == "up" ]
+then
+    migrate -path ./migrations -database "postgresql://$DB_USERNAME:$DB_PASSWORD@$DB_IPADDRESS:$DB_PORT/$DB_USERNAME?sslmode=disable" up
+elif [ "$1" == "down" ]
+then
+    migrate -path ./migrations -database "postgresql://$DB_USERNAME:$DB_PASSWORD@$DB_IPADDRESS:$DB_PORT/$DB_USERNAME?sslmode=disable" down
+elif [ "$1" == "force" ]
+then
+    migrate -path ./migrations -database "postgresql://$DB_USERNAME:$DB_PASSWORD@$DB_IPADDRESS:$DB_PORT/$DB_USERNAME?sslmode=disable" force "$2"
+else 
+    echo "Unknown command, try up or down."
+fi

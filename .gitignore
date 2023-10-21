@@ -4,3 +4,5 @@ build/
 .svelte-kit/
 .vscode/
 **/.env
+api/gin.log
+api/api
