@@ -65,7 +65,7 @@ func main() {
 	defer dbConn.Close()
 
 	// Define routes
-	r.GET("/blog", func(c *gin.Context) {
+	r.GET("/api/blog", func(c *gin.Context) {
 		blogID, err := strconv.Atoi(c.Query("id"))
 
 		if err != nil {
@@ -80,13 +80,13 @@ func main() {
 		})
 	})
 
-	r.GET("/projects", func(c *gin.Context) {
+	r.GET("/api/projects", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": routes.ReturnProjects(ctx, dbConn),
 		})
 	})
 
-	r.GET("/blogposts", func(c *gin.Context) {
+	r.GET("/api/blogposts", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": routes.ReturnBlogPosts(ctx, dbConn),
 		})
@@ -99,7 +99,7 @@ func main() {
 		panic(whitelistParseErr)
 	}
 
-	protectedEndpoint := r.Group("/admin")
+	protectedEndpoint := r.Group("/api/admin")
 	protectedEndpoint.Use(IPWhiteList(whitelist))
 
 	protectedEndpoint.POST("/createproject", func(c *gin.Context) {
