@@ -42,5 +42,7 @@ func ReturnProjects(ctx context.Context, dbConn *bun.DB) string {
 		panic(err)
 	}
 
+	println(string(data))
+
 	return string(data)
 }
