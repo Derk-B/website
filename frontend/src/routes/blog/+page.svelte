@@ -16,6 +16,4 @@
     <BlogCard blog={blog}/>
     {/each}
 </div>
-{:else}
-<Error/>
 {/if}

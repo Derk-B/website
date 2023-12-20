@@ -18,6 +18,4 @@
 </div>
 {:else if data}
     <h1 class="text-center h1 m-5">No projects available</h1>
-{:else}
-<Error/>
 {/if}
