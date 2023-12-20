@@ -21,7 +21,7 @@
     })
 </script>
 
-<a href="/blogpost?id={blog.ID}" class="card p-4 mx-auto my-5 min-w-[40%] max-w-[80%]">
+<a href="/blogpost?id={blog.ID}" class="card p-4 mx-auto my-5 min-w-[40%] w-[90%]">
     <img src={imgURL} class="mx-auto max-h-96" alt={blog.BannerAlt}/>
     <h2 class="h2 mb-5">{blog.Title}</h2>
     <p>{blog.Description}</p>

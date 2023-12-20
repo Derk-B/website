@@ -2,7 +2,6 @@
     import { fetchBlogs } from "$lib/fetchBlogs";
     import type { BlogCardDTO } from "$lib/models/blog";
     import { onMount } from "svelte";
-    import Error from "../components/error.svelte";
     import BlogCard from "./blogCard.svelte";
     
     let data : BlogCardDTO[];
