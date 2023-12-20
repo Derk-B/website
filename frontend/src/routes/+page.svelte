@@ -11,19 +11,22 @@
 	});
 </script>
 
-{#if pageLoaded}
-<div in:fly={{...options}} class="h-full flex items-center justify-center">
-	<div class="w-fit text-center">
-		<h1 class="text-4xl font-bold mb-3 gradient-heading">Hello, my name is Derk!</h1>
-		<h2 class="text-2xl">A Dutch software developer and computer science student</h2>
-		<div class="mt-5">
-			<a href="/projects" class="btn variant-filled-primary m-5 w-32" data-sveltekit-preload-data="hover">Projects</a>
-			<a href="/blog" class="btn variant-filled-primary m-5 w-32" data-sveltekit-preload-data="hover">Blog</a>
+<div class="h-full overflow-y-hidden">
+	{#if pageLoaded}
+	<div in:fly={{...options}} class="h-full flex items-center justify-center">
+		<div class="w-fit text-center">
+			<h1 class="text-4xl font-bold mb-3 gradient-heading">Hello, my name is Derk!</h1>
+			<h2 class="text-2xl">A Dutch software developer and computer science student</h2>
+			<div class="mt-5">
+				<a href="/projects" class="btn variant-filled-primary m-5 w-32" data-sveltekit-preload-data="hover">Projects</a>
+				<a href="/blog" class="btn variant-filled-primary m-5 w-32" data-sveltekit-preload-data="hover">Blog</a>
+			</div>
 		</div>
+		<div class="background_anim"/>
 	</div>
-	<div class="background_anim"/>
+	{/if}
 </div>
-{/if}
+
 
 <style>
 	@keyframes background_anim {
